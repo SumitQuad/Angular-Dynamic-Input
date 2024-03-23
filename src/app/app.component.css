@@ -1,0 +1,47 @@
+/* Style for existing fields */
+.existing-fields {
+    margin-bottom: 20px;
+  }
+  
+  .existing-field-btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .existing-field-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Style for newly added fields */
+  .new-field-container {
+    margin-bottom: 20px;
+  }
+  
+  .new-field label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  
+  .new-field input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .new-field input:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+  
