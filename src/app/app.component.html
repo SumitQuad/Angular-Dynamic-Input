@@ -3,15 +3,29 @@
    <button (click)="addField(item, i)" class="existing-field-btn">{{ item.label }}</button>
 </div>
 
+
+
 <!-- Newly added fields -->
 <div class="newly-added-fields" *ngFor="let item of neWFields; let i = index">
-   <div *ngIf="item.label === 'Name'" class="new-field-container" (click)="createNewField(i)"> <!-- Check if the label is 'Name' -->
-     <div *ngFor="let field of item.fieldsName; let j = index" class="new-field"> <!-- Iterate over fieldsName -->
+   <div *ngIf="item.label === 'Name'" class="new-field-container" (click)="createNewField(i)">
+     <div *ngFor="let field of item.fieldsName; let j = index" class="new-field">
        <label>{{ field.label }}</label>
        <input type="{{ field.type }}" placeholder="{{ field.placeholder }}" [(ngModel)]="field.value" (keyup)="createNewField(i, j)"><br/>
      </div>
    </div>
+   <div *ngIf="item.label === 'Billing Address'" class="new-field-container" (click)="createNewFieldTwo(i)">
+    <div class="new-field">
+      <label>{{ item.label }}</label>
+      <input type="{{ item.type }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" (keyup)="createNewFieldTwo(i)"><br/>
+      <!-- Add other properties as needed -->
+    </div>
+  </div>
 </div>
+
+<!-- Newly added fields -->
+<!-- Newly added fields -->
+
+ 
  
 
 <!-- On Edit Create Field -->
@@ -28,6 +42,18 @@
        </div>
    </div>
 </div>
+
+<div *ngFor="let item of neWFields; let i = index">
+  <div *ngIf="item.isEdit && editingIndex === i"> <!-- Check if isEdit is true for the current field -->
+          <!-- Display only the fields with index 0 (First Name) and 1 (Last Name) -->
+          <ng-container>
+              <label>{{ item.label }}</label>
+              <input type="{{ item.type }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" 
+              (keyup)="getInputValue(i, $event.target.value)">
+          </ng-container>
+  </div>
+</div>
+
 
 
 

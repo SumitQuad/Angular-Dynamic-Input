@@ -51,24 +51,24 @@ export class AppComponent {
       originalValue: 'Name',
     },
     {
-      label: 'Spreadsheet input',
+      label: 'Billing Address',
       field: 'spreadsheet_input',
       iconClass: 'ti ti-calendar-plus',
       type: 'text',
-      placeholder: 'Spreadsheet Input',
       helptext: '',
       isEdit: false,
       important: '',
       iTagClass: 'ti ti-cursor-text',
-      originalValue: 'Spreadsheet Input',
+      originalValue: 'Billing Address',
       isNew: true,
-      placeholders: ['Link', 'Anchor text'],
-      columns: ['Link', 'Anchor text']
-    },   
+      placeholders: "Billing Address",
+      fieldsName: [] // Initialize fieldsName property with an empty array
+    },  
   ];
 
   addField(item: any, index: number): void {
     const newIndex = this.neWFields.length; // Get the new index based on the length of neWFields
+    const fieldsName = item.fieldsName || []; 
     const newItem = { 
       ...item, 
       index: newIndex, 
@@ -106,6 +106,27 @@ export class AppComponent {
             field.fieldsName[1]  // Last Name
         ];
     }
+}
+
+createNewFieldTwo(newFieldIndex: number): void {
+  console.log('Input field index:', newFieldIndex);
+  console.log('neWFields[newFieldIndex]:', newFieldIndex, this.neWFields[newFieldIndex]);
+
+  const field = this.neWFields[newFieldIndex];
+  if (field) {
+    // Toggle isEdit property
+    field.isEdit = !field.isEdit;
+    console.log('isEdit toggled to:', field.isEdit, 'for field:', field);
+
+    // Check if the field is being edited
+    if (field.isEdit) {
+      // Set the editing index to the current field index
+      this.editingIndex = newFieldIndex;
+    } else {
+      // Reset the editing index
+      this.editingIndex = -1;
+    }
+  }
 }
 
 getInputValue(indexOne: number, indexTwo: number, data: any): void {
