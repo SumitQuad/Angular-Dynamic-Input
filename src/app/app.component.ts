@@ -10,8 +10,9 @@ import { NgModule } from '@angular/core';
 })
 
 export class AppComponent {
-  neWFields: any[] = []; // Corrected declaration
+  neWFields: any[] = []; 
   editingIndex: number = -1; 
+  globalIndexVal: number = 0;
   title = 'my-app'; 
   ExistingArr = [
     {
@@ -62,7 +63,7 @@ export class AppComponent {
       originalValue: 'Billing Address',
       isNew: true,
       placeholders: "Billing Address",
-      fieldsName: [] // Initialize fieldsName property with an empty array
+      fieldsName: [] 
     },  
   ];
 
@@ -78,6 +79,7 @@ export class AppComponent {
   
     console.log('Adding fields for:', newItem.index, newItem);
     console.log("New Fields", this.neWFields);
+    console.log("Index",newItem.index);
   }
   
   
@@ -130,7 +132,6 @@ createNewFieldTwo(newFieldIndex: number): void {
 }
 
 getInputValue(indexOne: number, indexTwo: number, data: any): void {
-  console.log('Old placeholder:', this.neWFields[indexOne].fieldsName[indexTwo].placeholder);
   console.log(data);
   console.log(indexOne);
   console.log(indexTwo);
@@ -146,6 +147,20 @@ getInputValue(indexOne: number, indexTwo: number, data: any): void {
   console.log('Updated neWFields:', this.neWFields[indexOne]);
 }
 
+getNewInputValue(indexOne: number, data: any): void {
+  console.log(data);
+  console.log(indexOne);
+
+  // Replace the placeholder of the specific field
+  const updatedData = data;
+
+  const fieldToUpdate = this.neWFields[indexOne];
+
+  fieldToUpdate.placeholder = data;
+
+  console.log('New placeholder:', fieldToUpdate.placeholder);
+  console.log('Updated neWFields:', this.neWFields[indexOne]);
+}
 
 
 }

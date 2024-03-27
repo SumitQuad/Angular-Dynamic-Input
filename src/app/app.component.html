@@ -49,7 +49,7 @@
           <ng-container>
               <label>{{ item.label }}</label>
               <input type="{{ item.type }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" 
-              (keyup)="getInputValue(i, $event.target.value)">
+              (keyup)="getNewInputValue(i, $event.target.value)">
           </ng-container>
   </div>
 </div>
